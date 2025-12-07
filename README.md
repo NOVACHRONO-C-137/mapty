@@ -1,78 +1,56 @@
-# Mapty App Documentation 🗺️
+# Mapty
 
-## 📑 Table of Contents
-1. [Introduction](#introduction)
-2. [✨ Features](#features)
-3. [🏗️ Architecture](#architecture)
-4. [🎨 User Interface](#user-interface)
-5. [⚙️ Core Functionality](#core-functionality)
-6. [💾 Data Management](#data-management)
-7. [🗺️ Map Integration](#map-integration)
-8. [🎭 Styling](#styling)
-9. [🚀 Future Enhancements](#future-enhancements)
+Mapty is a web application designed to help users log and track their running and cycling workouts. By leveraging the browser's Geolocation API and the Leaflet library, the app renders an interactive map where users can drop markers to log specific workout details.
 
-## 🔎 Introduction
-**Mapty** is a web application that allows users to log and track their workouts on an interactive map. Users can add running or cycling workouts, view their workout history, and see their workout locations on a map.
+[View the Live Demo](https://novachrono-c-137.github.io/mapty/)
 
-👉 [LIVE DEMO OF THE APP](https://novachrono-c-137.github.io/mapty/)  
+## Table of Contents
+1. [About](#about)
+2. [Features](#features)
+3. [Architecture](#architecture)
+4. [Tech Stack](#tech-stack)
+5. [Usage](#usage)
+6. [Future Enhancements](#future-enhancements)
 
+## About
+The main goal of this project is to practice Object-Oriented Programming (OOP) in JavaScript while working with third-party libraries (Leaflet) and browser APIs. It allows users to maintain a persistent log of their physical activities based on location.
 
-## ✨ Features
-- 🏃 Log running and cycling workouts  
-- 🗺️ Display workouts on an interactive map  
-- 💾 Store workout data locally  
-- 📋 View a list of all workouts  
-- 📍 Automatically detect user's location  
+## Features
+- **Workout Logging:** Users can log both running and cycling workouts.
+- **Interactive Map:** Workouts are visualized as markers on a map using the Leaflet library.
+- **Geolocation:** The app automatically fetches the user's current coordinates to center the map.
+- **Data Persistence:** All workout data is saved to the browser's Local Storage, ensuring data is not lost upon page reload.
+- **Form Validation:** Input fields are validated to ensure positive numbers and correct data types.
+- **Map Navigation:** Clicking a workout in the sidebar automatically pans the map to the specific workout marker.
 
-## 🏗️ Architecture
-The app is built using **vanilla JavaScript** with an **object-oriented approach**. It consists of the following main components:
+## Architecture
+The application is built using vanilla JavaScript with a strong focus on Object-Oriented architecture. The structure is divided into the following components:
 
-1. `App` class: The main application controller  
-2. `Workout` class: Base class for workouts  
-3. `Running` and `Cycling` classes: Specific workout types  
-4. **Leaflet library**: For map functionality  
+- **App Class:** The main controller that handles the application lifecycle, including map loading, event listeners, and local storage management.
+- **Workout Class:** A parent class containing common data (ID, coordinates, distance, duration, date).
+- **Running & Cycling Classes:** Child classes that extend the Workout class to include activity-specific attributes (pace for running, speed for cycling).
 
-## 🎨 User Interface
-The UI is divided into two main sections:  
-1. **Sidebar** 🗂️: Contains the form for adding new workouts and the list of saved workouts  
-2. **Map** 🗺️: Displays the interactive map with workout markers  
+## Tech Stack
+- **JavaScript (ES6+):** Core application logic.
+- **Leaflet API:** Used for rendering maps and managing markers.
+- **HTML5 & CSS3:** Layout and styling.
+- **LocalStorage API:** For persisting user data.
 
-## ⚙️ Core Functionality
+## Usage
+1. **Load the App:** When the application starts, it will request permission to access your location. Accept this to allow the map to center on your position.
+2. **Add a Workout:** Click anywhere on the map where you want to log a workout.
+3. **Fill Details:** A form will appear in the sidebar. Select the workout type (Running or Cycling) and fill in the distance, duration, and cadence/elevation.
+4. **View Logs:** Once submitted, a marker will appear on the map, and the workout details will be listed in the sidebar.
+5. **Persist Data:** You can reload the page, and your previous workouts will remain saved.
 
-### 📍 Geolocation
-- Uses the **browser's geolocation API** to get the user's current position  
-- Shows an alert if geolocation is not available  
+## Data Management
+The application uses the browser's Local Storage to save workout arrays. On initialization, the app checks for existing data and rebuilds the workout objects and map markers accordingly.
 
-### ➕ Adding Workouts
-1. User clicks on the map to set the workout location  
-2. A form appears for entering workout details  
-3. User selects the workout type (running or cycling) and enters details  
-4. On form submission, a new workout is created and added to the list and map  
-
-### 🖼️ Displaying Workouts
-- Workouts are displayed in a **list** in the sidebar  
-- Each workout is represented by a **marker** on the map  
-- Clicking on a workout in the list centers the map on that workout's location  
-
-## 💾 Data Management
-- Workouts are stored in the **browser's local storage**  
-- Data persists across page reloads  
-- A reset function is available to clear all stored data  
-
-## 🗺️ Map Integration
-- Uses the **Leaflet library** for map functionality  
-- Custom markers and popups display workouts on the map  
-
-## 🎭 Styling
-- Uses a custom **CSS file** for styling  
-- CSS variables ensure consistent color theming  
-- Layout is **responsive** with Flexbox and Grid  
-
-## 🚀 Future Enhancements
-Potential areas for improvement and new features:  
-1. ✏️ Ability to edit and delete workouts  
-2. 📊 More detailed workout statistics  
-3. 🌦️ Weather data integration for workout locations  
-4. 🔀 Ability to sort workouts by different criteria  
-5. 📤 Export workouts (GPX, CSV, etc.)  
-6. 👤 User accounts and cloud sync
+## Future Enhancements
+The following features are planned for future updates to improve the application:
+- Edit and delete functionality for individual workouts.
+- Advanced sorting options (by distance, duration, or date).
+- Weather API integration to save weather conditions at the time of the workout.
+- Detailed workout statistics and charts.
+- Functionality to draw lines connecting workout points.
+- User authentication and cloud storage sync.
